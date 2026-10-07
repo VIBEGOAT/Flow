@@ -227,6 +227,41 @@ p{margin:0}
 @media (max-width: 900px){.day-grid{grid-template-columns:1fr} .meter-card{position:static; order:-1}}
 @media (max-width: 560px){.foods{grid-template-columns:1fr}}
 
+
+/* ---------- nutri coffee ---------- */
+.coffee{--cc-bg:#D8B48A; --cc-ink:#2A1A10; background:var(--surface)}
+.coffee[data-cc="caramel"]{--cc-bg:#E0903A; --cc-ink:#2A1608}
+.coffee[data-cc="coffee"]{--cc-bg:#4A2E20; --cc-ink:#FBEFE2}
+.coffee[data-cc="cappuccino"]{--cc-bg:#C49A7C; --cc-ink:#24150D}
+.cc-grid{display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:clamp(24px,5vw,64px); align-items:center}
+.cc-stage{position:relative; display:grid; place-items:center; min-height:480px}
+.cc-stage .disc{background:var(--cc-bg); transition:background .5s; width:min(100%,420px)}
+.cc-pack{position:relative; width:min(52%,210px); aspect-ratio:.5; border-radius:30px 30px 22px 22px; background:var(--cc-bg); color:var(--cc-ink); border:3px solid var(--cc-ink); box-shadow:0 36px 60px -24px var(--shadow); transform:rotate(5deg); transition:background .5s,color .5s,transform .5s; padding:16% 10% 10%; display:grid; align-content:space-between; text-align:left; overflow:hidden}
+.cc-pack::before{content:""; position:absolute; left:0; right:0; top:0; height:9%; background:linear-gradient(180deg,var(--metal-a),var(--metal-b))}
+.cc-pack::after{content:""; position:absolute; inset:0; background:linear-gradient(95deg,transparent 20%,rgba(255,255,255,.22) 32%,transparent 44%); pointer-events:none}
+.cc-pack:hover{transform:rotate(1deg) translateY(-6px)}
+.cc-pack .p-by{font-family:var(--mono); font-size:.625rem; letter-spacing:.14em; text-transform:uppercase}
+.cc-pack .p-name{font-family:var(--display); font-weight:900; font-style:italic; font-size:clamp(1.6rem,3.6vw,2.2rem); line-height:.88; font-variation-settings:"wdth" 112; letter-spacing:-.01em}
+.cc-pack .p-flav{font-family:var(--display); font-weight:800; font-size:1rem; line-height:1.05; font-variation-settings:"wdth" 96; text-transform:uppercase}
+.cc-pack .p-facts{display:grid; gap:2px; font-family:var(--mono); font-size:.625rem; font-weight:600; text-transform:uppercase; letter-spacing:.05em; border-top:2px solid var(--cc-ink); padding-top:8px}
+.cc-note{position:absolute; bottom:0; right:0; font-family:var(--mono); font-size:.6875rem; color:var(--muted)}
+.cc-flavours{display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 10px}
+.cc-fl{font:600 .9375rem var(--body); padding:10px 16px; border-radius:999px; border:1.5px solid var(--line); background:var(--bg); color:var(--ink); cursor:pointer}
+.cc-fl[aria-pressed="true"]{border-color:var(--ink); box-shadow:inset 0 0 0 1px var(--ink)}
+.cc-desc{min-height:3.2em; color:var(--muted)}
+.cc-chips{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:20px}
+.cc-chip{display:grid; gap:2px; padding:16px 18px; border-radius:14px; background:var(--bg); border:1px solid var(--line)}
+.cc-chip b{font-family:var(--display); font-weight:850; font-size:1.125rem; font-variation-settings:"wdth" 96; line-height:1.15}
+.cc-chip span{font-size:.875rem; color:var(--muted)}
+.cc-status{margin-top:16px; padding:14px 18px; border-radius:14px; border:1.5px dashed var(--line); font-size:.875rem; color:var(--muted)}
+.cc-status b{color:var(--ink)}
+.duo{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:clamp(40px,6vw,64px)}
+.duo > div{padding:24px; border-radius:var(--radius); background:var(--bg); border:1px solid var(--line); display:grid; gap:8px; align-content:start}
+.duo .when{font-family:var(--mono); font-size:var(--t-label); text-transform:uppercase; letter-spacing:.12em; color:var(--muted)}
+.duo p{color:var(--muted); font-size:.9375rem}
+@media (max-width:900px){.cc-grid{grid-template-columns:1fr} .cc-stage{min-height:440px}}
+@media (max-width:560px){.cc-chips,.duo{grid-template-columns:1fr}}
+
 /* ---------- options ---------- */
 .options{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px}
 .opt{display:grid; gap:12px; align-content:start; padding:20px 18px; border-radius:var(--radius); background:var(--surface); border:1px solid var(--line)}
@@ -562,8 +597,9 @@ details.refs summary{cursor:pointer; font-family:var(--mono); font-size:.8125rem
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#why">The problem</a></li>
-      <li><a href="#day">Your B12 day</a></li>
-      <li><a href="#inside">Inside the can</a></li>
+      <li><a href="#coffee">Nutri Coffee</a></li>
+      <li><a href="#day">B12 day</a></li>
+      <li><a href="#inside">Inside FLOW</a></li>
       <li><a href="#science">Science</a></li>
       <li><a href="#compare">Compare</a></li>
       <li><a href="#market">Market</a></li>
@@ -599,6 +635,7 @@ details.refs summary{cursor:pointer; font-family:var(--mono); font-size:.8125rem
         <div class="cta-row">
           <a class="btn btn-primary" href="#pilot">Join the campus pilot</a>
           <a class="btn btn-ghost" href="#inside">See what's inside</a>
+          <a class="btn btn-ghost" href="#coffee">New: Nutri Coffee</a>
         </div>
       </div>
       <div class="stage" aria-label="FLOW can, concept render">
@@ -692,6 +729,50 @@ details.refs summary{cursor:pointer; font-family:var(--mono); font-size:.8125rem
           <p class="verdict" id="dayVerdict"></p>
           <button class="can-toggle" id="canToggle" aria-pressed="false"><span class="sw" aria-hidden="true"></span><span>Add one can of FLOW <span class="mono" style="font-weight:400">(+2.2 µg)</span></span></button>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUTRI COFFEE -->
+  <section class="sec coffee" id="coffee" data-cc="latte" aria-labelledby="ccTitle">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="kicker">New · Nutri Coffee</p>
+        <h2 id="ccTitle">Your nutritious morning coffee</h2>
+        <p class="lede">A packaged iced coffee with zero sugar and high protein, plus vitamins B12, C and D. Real coffee caffeine keeps you energised and focused while the nutrients cover what a normal cup leaves out.</p>
+      </header>
+      <div class="cc-grid">
+        <div class="cc-stage">
+          <div class="disc"></div>
+          <div class="cc-pack" role="img" aria-label="Nutri Coffee pack, concept illustration">
+            <span class="p-by">AAHAR Nutrition</span>
+            <span class="p-name">Nutri<br>Coffee</span>
+            <span class="p-flav" id="ccPackFlav">Iced Latte</span>
+            <span class="p-facts"><span>Zero sugar</span><span>High protein</span><span>B12 · C · D</span></span>
+          </div>
+          <p class="cc-note">Concept illustration, not final artwork</p>
+        </div>
+        <div>
+          <h3>Pick a flavour</h3>
+          <div class="cc-flavours" role="group" aria-label="Nutri Coffee flavours">
+            <button class="cc-fl" type="button" data-cc="latte" aria-pressed="true">Iced Latte</button>
+            <button class="cc-fl" type="button" data-cc="caramel" aria-pressed="false">Caramel</button>
+            <button class="cc-fl" type="button" data-cc="coffee" aria-pressed="false">Iced Coffee</button>
+            <button class="cc-fl" type="button" data-cc="cappuccino" aria-pressed="false">Iced Cappuccino</button>
+          </div>
+          <p class="cc-desc" id="ccDesc" aria-live="polite"></p>
+          <div class="cc-chips">
+            <div class="cc-chip"><b>Zero sugar</b><span>Sweetened without sugar</span></div>
+            <div class="cc-chip"><b>High protein</b><span>Protein-milk base</span></div>
+            <div class="cc-chip"><b>Vitamins B12, C and D</b><span>Vitamin B6 is being evaluated</span></div>
+            <div class="cc-chip"><b>Contains caffeine</b><span>From real coffee, for energy and focus</span></div>
+          </div>
+          <p class="cc-status"><b>In development.</b> Protein amount, vitamin doses and caffeine content will be set after formulation and tested like FLOW's. Nothing on this page is a final label claim.</p>
+        </div>
+      </div>
+      <div class="duo">
+        <div><p class="when">Morning</p><h3>Nutri Coffee</h3><p>Your daily coffee, made nutritious. Protein, vitamins and caffeine in one pack, with no sugar.</p></div>
+        <div><p class="when">Any time of day</p><h3>FLOW</h3><p>The caffeine-free can. Vitamin B12 and D3 at 100% of the adult requirement, plus vitamin C and light electrolytes.</p></div>
       </div>
     </div>
   </section>
@@ -1067,7 +1148,7 @@ details.refs summary{cursor:pointer; font-family:var(--mono); font-size:.8125rem
     <div class="foot-top">
       <div>
         <a class="brand" href="#top"><span class="brand-word">FLOW</span><span class="brand-by">by<br>AAHAR</span></a>
-        <p style="margin-top:14px">FLOW by AAHAR Nutrition. Karan Tandon &amp; Yashvardhan G., B.Tech Biotechnology, Galgotias University. Product images are concept mockup renders, not final artwork.</p>
+        <p style="margin-top:14px">FLOW and Nutri Coffee by AAHAR Nutrition. Karan Tandon &amp; Yashvardhan G., B.Tech Biotechnology, Galgotias University. Product images are concept mockup renders, not final artwork.</p>
       </div>
       <div class="foot-contact"><p class="kicker">Contact</p><div class="contact "><div class="ct"><a href="mailto:tandonkaran10@gmail.com?subject=FLOW%20by%20AAHAR">tandonkaran10@gmail.com</a><button type="button" class="copy" data-copy="tandonkaran10@gmail.com" aria-label="Copy email address">Copy</button></div><div class="ct"><a href="tel:+919005615375">+91 90056 15375</a><button type="button" class="copy" data-copy="+91 90056 15375" aria-label="Copy phone number">Copy</button></div></div></div>
     </div>
@@ -1497,6 +1578,21 @@ function showWeek(i){
 }
 wEl.addEventListener("click", function(e){ var b = e.target.closest(".wk"); if(b) showWeek(Number(b.dataset.i)); });
 showWeek(0);
+
+/* ---------- nutri coffee ---------- */
+var CC = {
+  latte:{name:"Iced Latte", d:"Smooth and milky, the easiest way to start the day."},
+  caramel:{name:"Caramel", d:"Caramel flavour that tastes sweet, with no sugar."},
+  coffee:{name:"Iced Coffee", d:"Bold and clean, for people who like coffee to taste like coffee."},
+  cappuccino:{name:"Iced Cappuccino", d:"Light and frothy, with a creamy top note."}
+};
+function setCC(k){
+  $("#coffee").setAttribute("data-cc", k);
+  $("#ccPackFlav").textContent = CC[k].name; $("#ccDesc").textContent = CC[k].d;
+  $$(".cc-fl").forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.cc === k ? "true":"false"); });
+}
+$$(".cc-fl").forEach(function(b){ b.addEventListener("click", function(){ setCC(b.dataset.cc); }); });
+setCC("latte");
 
 /* ---------- copy contact ---------- */
 document.addEventListener("click", function(e){
